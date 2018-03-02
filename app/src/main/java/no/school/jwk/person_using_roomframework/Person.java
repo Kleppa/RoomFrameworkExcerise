@@ -21,8 +21,8 @@ public class Person {
 
     }
     public Person(String firstName, String secondname) {
-        this.firstName = firstName;
-        this.lastName = secondname;
+        setLastName(secondname);
+        setFirstName(firstName);
     }
 
     public Long getUid() {

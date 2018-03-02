@@ -23,12 +23,12 @@ import no.school.jwk.person_using_roomframework.R;
 
 public class PersonArrayAdapter extends ArrayAdapter<Person> {
     @NonNull
-    private  Context mContext;
-    private  int resource;
+    private Context mContext;
+    private int resource;
     @NonNull
-    private  Person[] objects;
-    private  int textViewResourceId;
-    private  List<Person> objlist;
+    private Person[] objects;
+    private int textViewResourceId;
+    private List<Person> objlist;
 
     public PersonArrayAdapter(@NonNull Context context, int resource) {
         super(context, resource);
@@ -73,12 +73,11 @@ public class PersonArrayAdapter extends ArrayAdapter<Person> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View listItem = convertView;
-        if(listItem == null)
+        if (listItem == null)
 
-            listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item,parent,false);
+            listItem = LayoutInflater.from(mContext).inflate(R.layout.list_item, parent, false);
 
         Person currentPerson = objlist.get(position);
-
 
 
         TextView textView_firstname = (TextView) listItem.findViewById(R.id.textView_firstname);
@@ -89,8 +88,7 @@ public class PersonArrayAdapter extends ArrayAdapter<Person> {
 
         textView_lastname.setText(currentPerson.getLastName());
 
-
-
+        listItem.callOnClick()
         return listItem;
     }
 

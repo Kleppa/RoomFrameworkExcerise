@@ -36,9 +36,9 @@ public class PersonRepository {
         new insertAsyncTask(dao).execute(person);
     }
 
-    public List<Person> getUsersFromDb() {
+    public void loadUsersFromDatabase() {
         new getAllPersons(personList, dao, this).execute();
-        return personList;
+
     }
 
     public void dropFromDatabase(Person... person) {
@@ -51,10 +51,12 @@ public class PersonRepository {
     void setPersonList(List<Person> personList) {
 
         mainActivity.setPersonList(personList);
+        mainActivity.fillArrayAdapter(personList);
         this.personList = personList;
     }
 
     public Person findPersonByName(String firstname, String secondname) {
+
         new FindByName(dao, this).execute(firstname, secondname);
 
         return this.userToGet;
@@ -65,6 +67,7 @@ public class PersonRepository {
     }
 
     public void setUserToGet(Person userToGet) {
+
         userIsFound=true;
         this.userToGet = userToGet;
 
@@ -77,6 +80,7 @@ public class PersonRepository {
             Person tmp = userToGet;
             userToGet = null;
             return tmp;
+
         }
         Log.d("No Person Was Loaded by findPersonByNumber", "getPerson() returned nuull ");
         return null;
@@ -134,6 +138,7 @@ public class PersonRepository {
             Log.d("result", personList.toString());
 
             personRepository.setPersonList(personList);
+
 
         }
 
